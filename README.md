@@ -1,8 +1,8 @@
 # Python Automation Portfolio
 
-Python scripts and web tools for automating Excel, CSV, and web data tasks — cleaning, merging, analyzing, and reporting.
+Python scripts, web tools, and APIs for automating Excel, CSV, and web data tasks — cleaning, merging, analyzing, reporting, and delivering.
 
-Drop a messy spreadsheet in. Get a clean, professional report out.
+Drop a messy spreadsheet in. Get a clean, professional report out — or have it emailed automatically.
 
 ---
 
@@ -113,6 +113,50 @@ Built with Streamlit, requests, and BeautifulSoup.
 
 ---
 
+### `fastapi_cleaner.py` — CSV Cleaning API
+
+A backend API that accepts a CSV upload and returns a cleaned Excel file — built for integrating into other apps and client systems, not just browser use.
+
+**How to use:**
+1. Run the server locally with uvicorn
+2. Open the interactive docs at `/docs`
+3. Upload a CSV file to the `/clean` endpoint and execute
+4. Receive a cleaned, formatted Excel file back in the response
+
+**What it does:**
+- Accepts any CSV file via a POST request
+- Strips whitespace and standardizes text casing across all columns
+- Removes duplicate rows
+- Fills empty numeric cells with 0 and empty text cells with N/A
+- Returns a downloadable Excel file directly in the response — nothing is saved to disk
+- Returns a proper 400 error if no data remains after cleaning
+
+Built with FastAPI and pandas.
+
+---
+
+### `email_sender.py` — Automated Report Delivery
+
+Sends a cleaned report as an email attachment automatically — no manual downloading or attaching required.
+
+**What it does:**
+- Logs in securely using a Gmail App Password, never a real account password
+- Builds a complete email with subject, body, and attachment
+- Attaches the cleaned Excel file directly
+- Sends and closes the connection automatically
+
+**Setup:**
+Create a `.env` file in the same folder (never committed to this repo):
+```
+SENDER_EMAIL=your_email@gmail.com
+EMAIL_PASSWORD=your_app_password
+RECIEVER_EMAIL=recipient_email@gmail.com
+```
+
+Built with smtplib and python-dotenv.
+
+---
+
 ### `sales_report_generator.py` — Multi-File Sales Report
 
 Takes a folder of raw CSV sales files and outputs a single clean Excel report.
@@ -202,7 +246,7 @@ This script exists to demonstrate real delivery speed and quality under pressure
 
 **Install dependencies:**
 ```bash
-pip install openpyxl pandas requests beautifulsoup4 streamlit
+pip install openpyxl pandas requests beautifulsoup4 streamlit fastapi uvicorn python-multipart python-dotenv
 ```
 
 **Run the web apps locally:**
@@ -212,7 +256,13 @@ python -m streamlit run portfolio/scraper_app.py
 python -m streamlit run portfolio/multi_scraper_app.py
 ```
 
-**Or use the live versions — no installation needed:**
+**Run the API locally:**
+```bash
+uvicorn fastapi_cleaner:app --reload
+```
+Then visit `http://127.0.0.1:8000/docs` to test the `/clean` endpoint.
+
+**Or use the live web apps — no installation needed:**
 
 👉 [mahmoud-data-cleaner.streamlit.app](https://mahmoud-data-cleaner.streamlit.app)
 
@@ -227,6 +277,7 @@ python pandas_report.py
 python price_tracker.py
 python cleaner.py
 python merger.py
+python email_sender.py
 ```
 
 ---
@@ -239,12 +290,16 @@ python merger.py
 - requests
 - beautifulsoup4
 - streamlit
+- fastapi
+- uvicorn
+- python-multipart
+- python-dotenv
 
 ---
 
 ## About
 
-I automate Excel and data workflows using Python — cleaning messy files, merging reports, and delivering professional output fast. Every script is documented, non-destructive, and built to handle real-world data, not just clean demos.
+I automate Excel and data workflows using Python — cleaning messy files, merging reports, building APIs, and delivering results automatically by email. Every script is documented, non-destructive, and built to handle real-world data, not just clean demos.
 
 **Available for work on Fiverr → [fiverr.com/pymahmoud](https://www.fiverr.com/pymahmoud)**
 
