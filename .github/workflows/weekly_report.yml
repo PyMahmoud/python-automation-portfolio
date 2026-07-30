@@ -12,7 +12,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: pip install python-dotenv
-      - run: python email_sender.py
+      - run: python portfolio/email_sender.py
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           EMAIL_PASSWORD: ${{ secrets.EMAIL_PASSWORD }}
