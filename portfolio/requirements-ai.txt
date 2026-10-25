@@ -1,0 +1,6 @@
+groq
+chromadb
+sentence-transformers
+scikit-learn
+pypdf
+python-dotenv

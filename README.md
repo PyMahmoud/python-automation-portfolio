@@ -1,8 +1,8 @@
 # Python Automation Portfolio
 
-Python scripts, web tools, and APIs for automating Excel, CSV, and web data tasks — cleaning, merging, analyzing, reporting, and delivering.
+Python scripts, web tools, APIs, and AI agents for automating Excel, CSV, and web data tasks — cleaning, merging, analyzing, reporting, and delivering — plus hands-on LLM work: tool-calling assistants, document Q&A (RAG), and agents with long-term memory.
 
-Drop a messy spreadsheet in. Get a clean, professional report out — or have it emailed automatically.
+Drop a messy spreadsheet in. Get a clean, professional report out — or have it emailed automatically. Ask questions about a document and get answers grounded in its actual content.
 
 ---
 
@@ -33,11 +33,21 @@ Drop a messy spreadsheet in. Get a clean, professional report out — or have it
 
 ## What These Scripts Do
 
-Every script here solves a real business problem: messy data comes in, clean results go out — automatically, without touching the original files.
+Every script here solves a real business problem: messy data comes in, clean results go out — automatically, without touching the original files. The AI scripts apply the same idea to unstructured input: messy text and documents in, structured answers and actions out.
 
 ---
 
-## Tools & Scripts
+## Contents
+
+- [Data & Reporting Tools](#data--reporting-tools)
+- [Web Scraping](#web-scraping)
+- [AI & LLM Automation](#ai--llm-automation)
+- [How to Run](#how-to-run)
+- [Requirements](#requirements)
+
+---
+
+# Data & Reporting Tools
 
 ### `data_cleaner_app.py` — Data Cleaner Pro (Live Web App)
 
@@ -63,53 +73,6 @@ A full web application that cleans messy CSV and Excel files through a browser �
 - Outputs a multi-sheet formatted Excel file ready to deliver to clients
 
 Built with Streamlit — runs in any browser, no Python knowledge needed.
-
----
-
-### `scraper_app.py` — Web Scraper Pro (Live Web App)
-
-A full web application that scrapes any website and delivers the data as a clean Excel report.
-
-**🔗 Live demo: [mahmoud-web-scraper.streamlit.app](https://mahmoud-web-scraper.streamlit.app)**
-
-**How to use:**
-1. Enter any website URL in the sidebar
-2. Choose Auto mode to detect tables automatically, or Manual mode to enter an HTML tag and CSS class
-3. Optionally sort the data and generate a summary report
-4. Click Download to get your scraped data as a formatted Excel file
-
-**What it does:**
-- Auto-detects HTML tables on any page
-- Manual mode: scrape any element by tag and CSS class
-- Cleans and formats all scraped data automatically
-- Optional summary report with totals, averages, and highest values
-- Applies bold headers and optional row highlighting
-- Outputs a formatted Excel file ready to use
-
-Built with Streamlit, requests, and BeautifulSoup.
-
----
-
-### `multi_scraper_app.py` — Multi-Page Scraper Pro (Live Web App)
-
-A full web application that scrapes multiple pages automatically using a URL pattern.
-
-**🔗 Live demo: [mahmoud-multi-scraper.streamlit.app](https://mahmoud-multi-scraper.streamlit.app)**
-
-**How to use:**
-1. Enter a URL pattern using `{page}` where the page number goes (e.g. `https://example.com/page-{page}.html`)
-2. Set the number of pages to scrape
-3. Choose Auto or Manual scraping mode
-4. Click Download to get all scraped data combined into one Excel file
-
-**What it does:**
-- Loops through multiple pages automatically
-- Combines all pages into one clean dataset
-- Auto-detects tables or scrapes by tag and CSS class
-- Optional summary report and row highlighting
-- Outputs a formatted multi-sheet Excel file
-
-Built with Streamlit, requests, and BeautifulSoup.
 
 ---
 
@@ -194,17 +157,6 @@ Merges multiple CSV files and generates a grouped sales summary report.
 
 ---
 
-### `price_tracker.py` — Full Site Scraper & Price Report
-
-Scrapes product data across an entire site and outputs a price analysis report.
-
-- Scrapes multiple pages automatically with respectful request delays
-- Cleans and converts price data for analysis
-- Sorts all products by price
-- Outputs `price_report.xlsx` with bold headers and a Summary sheet: total items, average price, cheapest and most expensive item
-
----
-
 ### `cleaner.py` — Excel File Cleaner
 
 Takes any messy Excel file and returns a clean version automatically.
@@ -217,7 +169,7 @@ Takes any messy Excel file and returns a clean version automatically.
 
 ---
 
-### `merger.py` — Multi-File Excel Merger
+### `merge.py` — Multi-File Excel Merger
 
 Merges multiple Excel files from a folder into one master report.
 
@@ -242,12 +194,212 @@ This script exists to demonstrate real delivery speed and quality under pressure
 
 ---
 
+# Web Scraping
+
+### `scraper_app.py` — Web Scraper Pro (Live Web App)
+
+A full web application that scrapes any website and delivers the data as a clean Excel report.
+
+**🔗 Live demo: [mahmoud-web-scraper.streamlit.app](https://mahmoud-web-scraper.streamlit.app)**
+
+**How to use:**
+1. Enter any website URL in the sidebar
+2. Choose Auto mode to detect tables automatically, or Manual mode to enter an HTML tag and CSS class
+3. Optionally sort the data and generate a summary report
+4. Click Download to get your scraped data as a formatted Excel file
+
+**What it does:**
+- Auto-detects HTML tables on any page
+- Manual mode: scrape any element by tag and CSS class
+- Cleans and formats all scraped data automatically
+- Optional summary report with totals, averages, and highest values
+- Applies bold headers and optional row highlighting
+- Outputs a formatted Excel file ready to use
+
+Built with Streamlit, requests, and BeautifulSoup.
+
+---
+
+### `multi_scraper_app.py` — Multi-Page Scraper Pro (Live Web App)
+
+A full web application that scrapes multiple pages automatically using a URL pattern.
+
+**🔗 Live demo: [mahmoud-multi-scraper.streamlit.app](https://mahmoud-multi-scraper.streamlit.app)**
+
+**How to use:**
+1. Enter a URL pattern using `{page}` where the page number goes (e.g. `https://example.com/page-{page}.html`)
+2. Set the number of pages to scrape
+3. Choose Auto or Manual scraping mode
+4. Click Download to get all scraped data combined into one Excel file
+
+**What it does:**
+- Loops through multiple pages automatically
+- Combines all pages into one clean dataset
+- Auto-detects tables or scrapes by tag and CSS class
+- Optional summary report and row highlighting
+- Outputs a formatted multi-sheet Excel file
+
+Built with Streamlit, requests, and BeautifulSoup.
+
+---
+
+### `price_tracker.py` — Full Site Scraper & Price Report
+
+Scrapes product data across an entire site and outputs a price analysis report.
+
+- Scrapes multiple pages automatically with respectful request delays
+- Cleans and converts price data for analysis
+- Sorts all products by price
+- Outputs `price_report.xlsx` with bold headers and a Summary sheet: total items, average price, cheapest and most expensive item
+
+---
+
+### `scraper.py` and `multi_scraper.py` — Scraping Foundations
+
+The command-line building blocks behind the web apps, run against the public practice site [quotes.toscrape.com](https://quotes.toscrape.com).
+
+- `scraper.py` — fetches one page, parses quotes and authors with BeautifulSoup, saves to CSV
+- `multi_scraper.py` — loops through all 10 pages with a 1-second delay between requests and saves the combined result to Excel
+
+---
+
+# AI & LLM Automation
+
+Hands-on work with large language models, built from the raw API up before touching any framework: API calls → structured output → tool calling → memory → document Q&A (RAG) → agents with long-term memory. All scripts use the [Groq](https://groq.com) API with the `openai/gpt-oss-20b` model.
+
+### Stage 1 — LLM API Foundations
+
+| Script | What it demonstrates |
+|---|---|
+| `hello_llm.py` | A first end-to-end API call and reading the response |
+| `loop_hello_llm.py` | Sending multiple prompts in a loop and printing each reply |
+| `system_prompt_test.py` | How a `system` message changes the model's persona and behavior |
+| `temperature_test.py` | The same prompt at `temperature=0` vs `temperature=1` — deterministic vs. varied output |
+| `max_tokens_test.py` | What `max_tokens` does to response length |
+| `chat.py` | A multi-turn CLI chatbot that keeps full conversation history |
+
+---
+
+### `extract_info.py` — Structured Output (Message Classifier)
+
+Turns free-form customer messages into clean, parseable JSON — the step that makes LLM output usable inside real automations.
+
+- Classifies each message into `{intent, urgency, summary}`
+- Runs at `temperature=0` for consistent results
+- Strips any stray text around the JSON before parsing, so extra prose from the model doesn't break the pipeline
+- Tested against five different message types: delivery complaint, praise, store-hours question, urgent payment failure, cancellation request
+
+---
+
+### `tool_demo.py` — Function Calling
+
+Shows the mechanism every AI agent is built on: the model *requests* a function call, your code *executes* it, and the result is sent back for a final answer.
+
+- Two working tools: `get_weather` (stubbed data) and `calculate`
+- The model decides when a tool is needed — general questions are answered directly
+- Full request → execute → follow-up loop implemented by hand
+
+---
+
+### `chat_memory.py` and `chat_memory_summary.py` — Context & Memory Management
+
+Handles what happens when conversations outgrow the context window.
+
+- `chat_memory.py` — sliding window: keeps the system prompt plus only the most recent messages
+- `chat_memory_summary.py` — rolling summary: older messages are compressed into one running summary by the model, kept separate from the trimmed history so nothing important is lost
+
+Both keep the system prompt pinned so the persona never gets trimmed away.
+
+---
+
+### `assistant.py` — CLI Assistant (Everything Combined)
+
+One working assistant that combines the stage-1 skills.
+
+- Answers general questions as a normal chatbot with a persistent persona
+- Calls tools (`get_weather`, `calculate`) only when needed
+- Type `summary` to get a structured JSON summary of the conversation so far (topics and user facts)
+- Rolling-summary memory keeps long chats from breaking or ballooning in cost
+- Organized into clear functions instead of one long script
+
+---
+
+### Stage 2 — Embeddings, RAG & Agents
+
+### `embed_similarity.py` — Embeddings & Semantic Similarity
+
+Generates sentence embeddings with `all-MiniLM-L6-v2` and compares five sentence pairs using cosine similarity — showing that differently worded sentences with the same meaning ("She works as a doctor" / "She is a physician") score as similar, while unrelated ones don't.
+
+---
+
+### `chroma_intro.py` — Vector Database Basics
+
+Loads ten text snippets into a local ChromaDB collection and runs a semantic query ("Tell me about coding") that returns the closest matches by meaning, not by keyword.
+
+---
+
+### `chunks.py` — RAG Pipeline over a PDF
+
+Document Q&A grounded in the document's real content instead of the model's guesses.
+
+**How it works:**
+1. Reads `doc.pdf` and splits the text into overlapping 500-character chunks
+2. Embeds each chunk and stores it in ChromaDB
+3. For each question, retrieves the 3 most relevant chunks
+4. Passes them to the model with an instruction to answer *only* from that context — and to say "I don't know based on the document" otherwise
+
+Set `SHOW_MATCHES = True` to print the retrieved chunks and see exactly what the answer was based on.
+
+`doc.pdf` is a sample employee handbook for a fictional company (Nile Brew Co.), included so the pipeline can be tried immediately.
+
+---
+
+### `react_agent.py` — ReAct Agent with Long-Term Memory
+
+An agent built by hand — no framework — around the reason → act → observe → repeat loop.
+
+- **Tools:** leave-days lookup, a restricted calculator, and `remember_fact`
+- **Long-term memory:** facts are embedded and saved in a persistent ChromaDB store (`agent_memory/`), so the agent can recall something told to it in a previous session
+- **Duplicate protection:** a new fact that is nearly identical to a stored one (cosine distance below a threshold) isn't saved twice
+- **Relevance cutoff:** only memories close enough to the current question are recalled
+- **Loop safety:** a `MAX_STEPS` limit prevents runaway loops; tool errors are returned to the model so it can retry
+- **Chat commands:** `/memories` lists saved facts, `/forget` clears them, `quit` exits
+
+---
+
+### `week2_rag_agent.py` — Document + Memory Agent
+
+Combines the RAG pipeline and the long-term-memory agent: a personal knowledge assistant that searches your documents *only when it needs to*.
+
+- `search_docs` tool backed by the handbook PDF — called for company questions, skipped for general chat
+- Persistent long-term memory (`remember_fact`) carried over from `react_agent.py`
+- **Output guardrail:** if the calculator returned a number but the final answer doesn't contain it, the script flags the answer as untrustworthy instead of silently passing it along
+- Instructed never to guess company policy numbers — unsupported questions return "I don't know based on the document"
+- Debug mode prints retrieval distances so thresholds can be tuned
+
+---
+
 ## How to Run
 
 **Install dependencies:**
 ```bash
-pip install openpyxl pandas requests beautifulsoup4 streamlit fastapi uvicorn python-multipart python-dotenv
+# Data, reporting, and scraping tools
+pip install -r requirements.txt
+pip install openpyxl fastapi uvicorn python-multipart python-dotenv
+
+# AI & LLM scripts
+pip install -r requirements-ai.txt
 ```
+
+**Set your Groq API key** (required for all AI scripts — get a free key at [console.groq.com](https://console.groq.com)):
+```bash
+# macOS / Linux
+export GROQ_API_KEY="your_key_here"
+
+# Windows (PowerShell)
+$env:GROQ_API_KEY="your_key_here"
+```
+Never hard-code the key in a script or commit it to the repo.
 
 **Run the web apps locally:**
 ```bash
@@ -276,30 +428,33 @@ python sales_report_generator.py
 python pandas_report.py
 python price_tracker.py
 python cleaner.py
-python merger.py
+python merge.py
 python email_sender.py
+
+# AI scripts
+python extract_info.py
+python assistant.py
+python chunks.py
+python week2_rag_agent.py
 ```
+
+> The first run of any embedding-based script (`embed_similarity.py`, `chunks.py`, `react_agent.py`, `week2_rag_agent.py`) downloads the embedding model, which can take a minute or two.
 
 ---
 
 ## Requirements
 
 - Python 3.x
-- openpyxl
-- pandas
-- requests
-- beautifulsoup4
-- streamlit
-- fastapi
-- uvicorn
-- python-multipart
-- python-dotenv
+
+**Data, reporting & scraping:** openpyxl, pandas, requests, beautifulsoup4, streamlit, plotly, fastapi, uvicorn, python-multipart, python-dotenv
+
+**AI & LLM:** groq, chromadb, sentence-transformers, scikit-learn, pypdf, python-dotenv
 
 ---
 
 ## About
 
-I automate Excel and data workflows using Python — cleaning messy files, merging reports, building APIs, and delivering results automatically by email. Every script is documented, non-destructive, and built to handle real-world data, not just clean demos.
+I automate Excel and data workflows using Python — cleaning messy files, merging reports, scraping the web, building APIs, and delivering results automatically by email — and I build LLM-powered tools that classify messy text, answer questions from documents, and act through tools with persistent memory. Every script is documented, non-destructive, and built to handle real-world data, not just clean demos.
 
 **Available for work on Fiverr → [fiverr.com/pymahmoud](https://www.fiverr.com/pymahmoud)**
 

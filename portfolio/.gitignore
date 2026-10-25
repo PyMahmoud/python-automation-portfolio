@@ -1,1 +1,3 @@
 .env
+agent_memory/
+__pycache__/
