@@ -383,12 +383,14 @@ Combines the RAG pipeline and the long-term-memory agent: a personal knowledge a
 
 **Install dependencies:**
 ```bash
+# Run these from the repository root
+
 # Data, reporting, and scraping tools
-pip install -r requirements.txt
-pip install openpyxl fastapi uvicorn python-multipart python-dotenv
+pip install -r portfolio/requirements.txt
+pip install fastapi python-dotenv
 
 # AI & LLM scripts
-pip install -r requirements-ai.txt
+pip install -r portfolio/requirements-ai.txt
 ```
 
 **Set your Groq API key** (required for all AI scripts — get a free key at [console.groq.com](https://console.groq.com)):
