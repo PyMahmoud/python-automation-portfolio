@@ -5,11 +5,13 @@ client = Groq()
 
 # ---------- Day 4: Tools ----------
 def calculate(expression):
+    allowed = set("0123456789+-*/(). ")
+    if not set(expression) <= allowed or "**" in expression or len(expression) > 100:
+        return "Error: only numbers and + - * / ( ) are allowed"
     try:
-        return str(eval(expression))
+        return str(eval(expression, {"__builtins__": {}}, {}))
     except Exception as e:
         return f"Error: {e}"
-
 def get_weather(city):
     fake_weather_data = {
         "Cairo": "28°C and sunny",
